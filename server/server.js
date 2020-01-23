@@ -3,7 +3,7 @@ const http = require("http");
 const socketIo = require("socket.io");
 const axios = require("axios");
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 const index = require("./routes/index");
 
 const app = express();
