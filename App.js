@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import socketIOClient from 'socket.io-client';
-import {Text, View, StyleSheet } from 'react-native'
+import {Text, View, StyleSheet, Button } from 'react-native'
 
 class App extends Component {
     constructor() {
@@ -16,16 +16,25 @@ class App extends Component {
         socket.on('FromAPI', data => this.setState({response: data}));
     }
 
+    clicked() {
+        const {endpoint} = this.state;
+        const socket = socketIOClient(endpoint);
+        socket.on('FromAPI', data => this.setState({response: data}));
+    }
+
     render() {
         const {response} = this.state;
         return (
             <Fragment>
                 <View style={styles.container}>
                     {
-                        response ? <Text>The temperature in Shiraz is: {response} °C</Text>
-                        : <Text>Loading...</Text>
+                        response ?
+                            <Text>The temperature in Shiraz is: {response} °C</Text>
+                        :
+                            <Text>Loading...</Text>
                     }
                 </View>
+                <Button title={"over getApiAndEmit"} onPress={() => this.clicked()}/>
             </Fragment>
         );
     }

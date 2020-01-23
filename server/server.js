@@ -27,6 +27,7 @@ const getApiAndEmit = async socket => {
             "https://api.darksky.net/forecast/1ed1ddbb4a7ab6edb9159c0a24db77ff/42.3601,-71.0589"
         ); // Getting the data from DarkSky
         socket.emit("FromAPI", res.data.currently.temperature); // Emitting a new message. It will be consumed by the client
+        console.error("axios in works...");
     } catch (error) {
         console.error(`Error: ${error.code}`);
     }
