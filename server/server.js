@@ -3,7 +3,7 @@ const http = require("http");
 const socketIo = require("socket.io");
 const axios = require("axios");
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3005;
 const index = require("./routes/index");
 
 const app = express();
@@ -27,7 +27,7 @@ const getApiAndEmit = async socket => {
             "https://api.darksky.net/forecast/1ed1ddbb4a7ab6edb9159c0a24db77ff/42.3601,-71.0589"
         ); // Getting the data from DarkSky
         socket.emit("FromAPI", res.data.currently.temperature); // Emitting a new message. It will be consumed by the client
-        console.error("axios in works...");
+        console.info("axios in works...");
     } catch (error) {
         console.error(`Error: ${error.code}`);
     }

@@ -7,16 +7,10 @@ class App extends Component {
         super();
         this.state = {
             response: false,
-            endpoint: 'http://localhost:8000',
+            endpoint: 'http://192.168.43.84:3005',
         };
     }
     componentDidMount() {
-        const {endpoint} = this.state;
-        const socket = socketIOClient(endpoint);
-        socket.on('FromAPI', data => this.setState({response: data}));
-    }
-
-    clicked() {
         const {endpoint} = this.state;
         const socket = socketIOClient(endpoint);
         socket.on('FromAPI', data => this.setState({response: data}));
@@ -34,7 +28,6 @@ class App extends Component {
                             <Text>Loading...</Text>
                     }
                 </View>
-                <Button title={"over getApiAndEmit"} onPress={() => this.clicked()}/>
             </Fragment>
         );
     }
